@@ -53,7 +53,12 @@ Running the project:
 
 - Switch to the backend directory in your terminal.
 - Execute npm install to install the required Node.js dependencies.
-- Set up the environment file with the necessary configuration settings.
+- Set up the environment file (.env) with
+- ```bash
+  DATABASE_URL=mongodb+srv://nirognith:5U4C05yyMObcg6lz@nirog.4ijff5z.mongodb.net/?retryWrites=true&w=majority&appName=NIrog
+  JWT_KEY=nirog_nith
+  PORT=8080
+  ```
 - Start the backend server by running node server.js.
 
 3.Adds Folder Setup:
