@@ -1,5 +1,5 @@
-﻿# the_Trailblazers
-NIROG 
+﻿# Nirog_App
+ 
 (A Systematic Patient Treatment Model in Govt. Hospitals of  INDIA)
 
 
