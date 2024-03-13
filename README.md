@@ -59,6 +59,7 @@ Running the project:
   JWT_KEY=nirog_nith
   PORT=8080
   ```
+-Install mongodb compass application & paste the above url and connect to the project to see the database live (default is test)
 - Start the backend server by running node server.js.
 
 3.Adds Folder Setup:
