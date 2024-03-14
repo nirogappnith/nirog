@@ -63,7 +63,7 @@ const HospDash = () => {
   const getHospitalDetails = async (id) => {
     try {
       console.log('Hospital ID:', id);
-      const response = await fetch(`https://the-trailblazers.onrender.com/admin/getHospitalDetails`, {
+      const response = await fetch(`https://localhost:8008/admin/getHospitalDetails`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

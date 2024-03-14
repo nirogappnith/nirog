@@ -14,7 +14,7 @@ const HospLogin = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const response = await fetch('https://the-trailblazers.onrender.com/admin/login', {
+        const response = await fetch('https://localhost:8008/admin/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
