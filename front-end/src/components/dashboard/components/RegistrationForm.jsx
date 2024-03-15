@@ -30,7 +30,7 @@ const RegistrationForm = ({changeMode}) => {
     // hit api
     const sendToTokenController = async () => {
       alert("about to send request to server")
-      await axios.post('https://the-trailblazers.onrender.com/user/allot_token_number', {
+      await axios.post('https://localhost:8008/user/allot_token_number', {
         userJWT,
         appointmentType: selectedOption,
         severity: 3,

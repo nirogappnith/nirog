@@ -20,7 +20,7 @@ const docLogin = () => {
         console.log('Password:', password);
         try
                 {
-                    const response = await fetch('https://the-trailblazers.onrender.com/doctor/login', {
+                    const response = await fetch('https://localhost:8008/doctor/login', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

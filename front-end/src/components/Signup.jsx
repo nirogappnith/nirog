@@ -17,7 +17,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     const sendOTP = async () => {
-      await axios.post('https://the-trailblazers.onrender.com/user/sendOTP', {name, sex, dob, age, mobile, email, isRegistered: false})
+      await axios.post('https://localhost:8008/user/sendOTP', {name, sex, dob, age, mobile, email, isRegistered: false})
         .then(response => response)
         .then(data => console.log("otp sending response: ", data))
         .then(alert('otp sent'))
@@ -34,7 +34,7 @@ const LoginForm = () => {
     alert(`otp you entered is ${otp}`)  
 
     const registerUser = async () => {
-      await axios.post('https://the-trailblazers.onrender.com/user/register/', {name, otp, sex, dob, age, mobile, email})
+      await axios.post('https://localhost:8008/user/register/', {name, otp, sex, dob, age, mobile, email})
       .then(res=>{
         if (res.status == 201) {
           console.log('res after register: ', res)

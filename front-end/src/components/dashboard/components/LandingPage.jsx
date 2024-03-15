@@ -14,7 +14,7 @@ const LandingPage = ({changeMode}) => {
     }
 
     const fetchData = async () => {
-      await axios.post('https://the-trailblazers.onrender.com/user/current/', {jwtToken})
+      await axios.post('https://localhost:8008/user/current/', {jwtToken})
       .then(res=> {
         const patientDetails = res.data.patient
         console.log('patientDetails: ', patientDetails)
@@ -24,7 +24,7 @@ const LandingPage = ({changeMode}) => {
       console.log(patientDetails)
 
 
-      await axios.post('https://the-trailblazers.onrender.com/doctor/getDoctor/', {doctor_id: patientDetails.DoctorAssigned})
+      await axios.post('https://localhost:8008/doctor/getDoctor/', {doctor_id: patientDetails.DoctorAssigned})
         .then(res=>{
           console.log('response from get doctor: ', res)
           setDoctor(res.data)
