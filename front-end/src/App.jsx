@@ -10,6 +10,7 @@ import DocLogin from "./components/doctor/docLogin";
 import HospSignup from "./components/admin/HospRegis";
 import HospDash from "./components/admin/HospDash";
 import DocPanel from "./components/doctor/docPanel";
+import Doxaab from "./components/dashboard/components/Doxaab"
 
 export default function App() {
     return (
@@ -78,6 +79,15 @@ export default function App() {
                 element={
                 <>
                     <DocPanel/>
+                </>
+                }
+            />
+
+           <Route
+                path="/Doxaab"
+                element={
+                <>
+                    <Doxaab />
                 </>
                 }
             />
