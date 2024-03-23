@@ -57,7 +57,7 @@ Running the project:
 - ```bash
   DATABASE_URL=mongodb+srv://nirognith:5U4C05yyMObcg6lz@nirog.4ijff5z.mongodb.net/?retryWrites=true&w=majority&appName=NIrog
   JWT_KEY=nirog_nith
-  PORT=8080
+  PORT=8008
   ```
 -Install mongodb compass application & paste the above url and connect to the project to see the database live (default is test)
 - Start the backend server by running node server.js.
