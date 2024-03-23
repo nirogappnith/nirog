@@ -238,16 +238,30 @@ const Doctor = require("../models/doctorModel.js");
 const Patients = require("../models/patientModel.js");
 const Hospital = require("../models/hospitalModel.js");
 const generateToken = require("../utils/generateToken.js");
+const { doctorLoginSchema,doctorRegistrationSchema } = require('../auth/schemas/doctorSchema.js')
 const jwt = require("jsonwebtoken");
 
 const login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    // const { email, password } = req.body;
 
-    // Input validation
-    if (!email || !password) {
-      throw new Error("Email and password are required");
+    // // Input validation
+    // if (!email || !password) {
+    //   throw new Error("Email and password are required");
+    // }
+
+    const { success, data } = doctorLoginSchema.safeParse(req.body)
+    
+    if (!success) {
+      return res.status(400).json({
+        error: "Invalid req body"
+      })
     }
+
+    // const email = data.email;
+    // const password = data.password;
+
+    const { email, password } = data;
 
     const doctor = await Doctor.findOne({ email });
 
@@ -272,21 +286,40 @@ const login = async (req, res) => {
 
 const register = async (req, res) => {
   try {
-    const { name, email, password, mobile, adminJWT, exp, specialisation } =
-      req.body;
+    // const { name, email, password, mobile, adminJWT, exp, specialisation } =
+    //   req.body;
 
-    // Input validation
-    if (
-      !name ||
-      !email ||
-      !password ||
-      !mobile ||
-      !adminJWT ||
-      !exp ||
-      !specialisation
-    ) {
-      throw new Error("All fields are required");
+    // // Input validation
+    // if (
+    //   !name ||
+    //   !email ||
+    //   !password ||
+    //   !mobile ||
+    //   !adminJWT ||
+    //   !exp ||
+    //   !specialisation
+    // ) {
+    //   throw new Error("All fields are required");
+    // }
+
+    // zod input validation
+    const { success, data } = doctorRegistrationSchema.safeParse(req.body);
+
+    if (!success) {
+      return res.status(400).json({
+        error: "Invalid request body | All fields are required"
+      })
     }
+
+    const {
+      email,
+      name,
+      password,
+      mobile,
+      adminJWT,
+      exp,
+      specialisation
+    } = data
 
     const doctorExists = await Doctor.findOne({ email });
     if (doctorExists) {
