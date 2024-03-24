@@ -10,7 +10,7 @@ const doctorRegistrationSchema = zod.object({
   email: zod.string(),
   mobile: zod.number(),
   specialisation: zod.string().optional(),
-  createdAt: zod.date().optional() 
+  createdAt: zod.date().optional()
 })
 
 const doctorLoginSchema = zod.object({

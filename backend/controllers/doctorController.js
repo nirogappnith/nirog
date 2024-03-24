@@ -250,7 +250,8 @@ const login = async (req, res) => {
     //   throw new Error("Email and password are required");
     // }
 
-    const { success, data } = doctorLoginSchema.safeParse(req.body)
+    // zod input validation
+    const { success, data } = doctorLoginSchema.safeParse(req.body);
     
     if (!success) {
       return res.status(400).json({
