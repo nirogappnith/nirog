@@ -5,7 +5,6 @@ const axios = require('axios')
 const jwt = require('jsonwebtoken')
 
 const generateToken = require('../utils/generateToken');
-
 const expressAsync = require('express-async-handler');
 const Hospital = require('../models/hospitalModel');
 
@@ -137,6 +136,10 @@ const sendOTP = expressAsync(async(req, res) => {
 
 const loginUser = expressAsync(async(req, res) => {
   const email = res.locals.email
+
+  // const { success, data } = userLoginSchema.safeParse(req.body);
+  // const { email } = data
+
   const patient = await Patient.findOne({email}) 
 
   const token = jwt.sign({email}, process.env.JWT_KEY)
