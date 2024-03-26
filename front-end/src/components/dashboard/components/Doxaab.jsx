@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import 'tailwindcss/tailwind.css';  // Import the Tailwind CSS styles
+import "./Doxaab.css"
 
 function App() {
   const [inputMsg, setInputMsg] = useState('');
@@ -23,25 +24,28 @@ function App() {
   };
 
   return (
-    <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-4">Talk to Doxaab!!</h1>
+  
+ <div className="main">
+    <div class="container1">
+      <h1 class="header1">Talk to Doxaab!!</h1>
       <textarea
         value={inputMsg}
         onChange={(e) => setInputMsg(e.target.value)}
-        className="w-full p-4 border border-gray-300 mb-4"
+        className="text"
         rows="4"
         placeholder="Type your message..."
       ></textarea>
       <button
         onClick={sendMessage}
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+        className="button1 "
       >
         Send Message
       </button>
-      <div className="mt-4">
-        <strong className="text-lg font-bold">Doxaab  :</strong> {response}
+      <div className="bottom">
+        <strong className="bottom-text">Doxaab  :</strong> {response}
       </div>
     </div>
+ </div>
   );
 }
 
