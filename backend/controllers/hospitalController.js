@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt')
 const Hospital =require( '../models/hospitalModel.js')
 const Patient =require( '../models/patientModel.js')
 const Doctor =require( '../models/doctorModel.js')
@@ -35,9 +36,18 @@ const login = expressAsync(async(req,res)=>{
             })
         }
 
-        const { email } = data;
+        const { email, password } = data;
+        const admin = await Hospital.findOne({ email });
 
-        const admin = await Hospital.findOne({email});
+        //checking the password
+        const validPassword = await bcrypt.compare(password, admin.password);
+
+        if (!validPassword || !admin) {
+            return res.status(401).json({
+                error: "Incorrect username or password"
+            })
+        }
+
         const jwtToken = generateToken(admin._id);
         res.status(200).json({
             _id:admin._id,
@@ -74,6 +84,10 @@ const login = expressAsync(async(req,res)=>{
             password
         } = data
 
+        // hashing the password
+        const salt = await bcrypt.genSalt(); // adding salt
+        const hashedPassword = await bcrypt.hash(password, salt); // hashing the password using salt
+
         const hospitalExists = await Hospital.findOne({name})
         if ( hospitalExists ) {
             console.log("found already");
@@ -81,9 +95,10 @@ const login = expressAsync(async(req,res)=>{
             throw new Error('hospital already exists')
         }
         const hospital=await Hospital({
-            name,email, address, pincode, password           
-        })
+            name,email, address, pincode, password: hashedPassword          
+        }) // added hashedPassword
         console.log("created!");
+        console.log(hospital)
         
         const saved= await hospital.save();
 
