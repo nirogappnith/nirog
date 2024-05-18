@@ -1,7 +1,7 @@
 ﻿# Nirog_App
  
 (A Systematic Patient Treatment Model in Govt. Hospitals of  INDIA)
-
+Maintained by @mehulambastha and @Sourabh-awasthy
 
 NIROG MODEL FEATURES ---
 
