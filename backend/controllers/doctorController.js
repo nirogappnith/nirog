@@ -234,6 +234,7 @@
 // };
 
 // module.exports = { login, register, getDoctor, doneForToday, getPatients };
+const bcrypt = require('bcrypt')
 const Doctor = require("../models/doctorModel.js");
 const Patients = require("../models/patientModel.js");
 const Hospital = require("../models/hospitalModel.js");
@@ -266,18 +267,22 @@ const login = async (req, res) => {
 
     const doctor = await Doctor.findOne({ email });
 
+    const validPassword = await bcrypt.compare(password, doctor.password)
+
     // Check if doctor exists and verify password
-    if (doctor && doctor.password === password) {
-      const jwtToken = generateToken(doctor._id);
-      res.status(200).json({
-        _id: doctor._id,
-        name: doctor.name,
-        email: doctor.email,
-        jwtToken: jwtToken,
-      });
-    } else {
-      res.status(401).json({ message: "Invalid email or password" });
+    if (!doctor || !validPassword ) {
+      return res.status(401).json({
+        error: "Incorrect username or password"
+      })
     }
+
+    const jwtToken = generateToken(doctor._id);
+    res.status(200).json({
+      _id: doctor._id,
+      name: doctor.name,
+      email: doctor.email,
+      jwtToken: jwtToken,
+    });
   } catch (error) {
     // Error handling
     console.error("Login error:", error);
@@ -305,7 +310,6 @@ const register = async (req, res) => {
 
     // zod input validation
     const { success, data } = doctorRegistrationSchema.safeParse(req.body);
-
     if (!success) {
       return res.status(400).json({
         error: "Invalid request body | All fields are required"
@@ -317,21 +321,27 @@ const register = async (req, res) => {
       name,
       password,
       mobile,
-      adminJWT,
       exp,
       specialisation
     } = data
+
+    const { adminJWT } = req.body
 
     const doctorExists = await Doctor.findOne({ email });
     if (doctorExists) {
       return res.status(400).json({ message: "Doctor already exists" });
     }
 
+    // hashing the password
+    const salt = await bcrypt.genSalt(); // generating the salt
+    const hashedPassword = await bcrypt.hash(password, salt) // hashing with salt
+
+
     // Create new doctor
     const doctor = new Doctor({
       name,
       email,
-      password,
+      password: hashedPassword,
       mobile,
     });
 
