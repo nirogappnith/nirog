@@ -5,11 +5,17 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-  theme:{fontFamily:{
-    'sans': ['DM Sans', 'sans-serif'],
-    'binate':['Binate', 'sans-serif'],
-    'mono': ['Space Mono', 'monospace'],
-  },
+  theme:{
+    fontFamily: {
+      kanit: ["Kanit", "sans-serif"],
+      lato: ["Lato", "sans-serif"],
+      outfit: ["Outfit", "sans-serif"],
+      poppins: ["Poppins", "sans-serif"],
+      roboto: ["Roboto", "sans-serif"],
+      mukta: ["Mukta", "sans-serif"],
+      inter: ["Inter", "sans-serif"],
+      "chakra-petch": ['"Chakra Petch"', "sans-serif"],
+    },
 },
 }
 

@@ -49,7 +49,7 @@ const RegistrationForm = ({ changeMode }) => {
   };
 
   return (
-    <div className="flex flex-col gap-3 mt-10">
+    <div className="flex flex-col gap-3 mt-10 p-6">
       <h1 className="font-bold">REGISTRATION FORM</h1>
       <h2 className="font-bold">(पंजीकरण)</h2>
       <div className="self-start flex flex-col p-10 w-4/5 m-auto">
