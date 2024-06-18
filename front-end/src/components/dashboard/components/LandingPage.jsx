@@ -45,7 +45,7 @@ const LandingPage = ({ changeMode }) => {
     });
   };
 
-  const cardDivClasses = "border p-3 rounded bg-zinc-100/40"
+  const cardDivClasses = "border p-3 rounded bg-zinc-100/40";
 
   return (
     // <div className="flex flex-col gap-4 w-full mt-3 font-poppins p-3 overflow-x-hidden">
@@ -64,8 +64,8 @@ const LandingPage = ({ changeMode }) => {
     //       </p>
     //       <div className="flex justify-end">
     //         <button
-              // className="bg-[#2e90f5]  text-white font-semibold px-3 py-1 rounded-md"
-              // onClick={() => changeMode("hospitalSelect")}
+    // className="bg-[#2e90f5]  text-white font-semibold px-3 py-1 rounded-md"
+    // onClick={() => changeMode("hospitalSelect")}
     //         >
     //           BOOK APPOINTMENT
     //         </button>
@@ -91,22 +91,24 @@ const LandingPage = ({ changeMode }) => {
     //       </tr>
     //     </table> */}
     //   </div>
-      // <div
-      //   onClick={callerbot}
-      //   className="fixed bottom-8 flex hover:scale-110 hover:shadow-lg duration-100 items-center justify-center right-8 rounded-full w-20 h-20 bg-green-500"
-      // >
-      //   <img src="/chatbot.png" width={85} />
-      // </div>
+    // <div
+    //   onClick={callerbot}
+    //   className="fixed bottom-8 flex hover:scale-110 hover:shadow-lg duration-100 items-center justify-center right-8 rounded-full w-20 h-20 bg-green-500"
+    // >
+    //   <img src="/chatbot.png" width={85} />
+    // </div>
     // </div>
     <div className="flex flex-col h-full w-full p-6 md:py-10 md:px-0 gap-8 font-inter">
       <div className="flex flex-col gap-4 px-6">
         <div className="flex">
-        <img src="/profile.png" className="w-20 sm:w-32" />
-        <h1 className="text-2xl font-bold sm:text-4xl flex items-end m-0 p-0">
+          <img src="/profile.png" className="w-20 sm:w-32" />
+          <h1 className="text-2xl font-bold sm:text-4xl flex items-end m-0 p-0">
             Welcome back, Username!
-        </h1>
+          </h1>
         </div>
-        <p className="text-gray-500  text-base= sm:text-xl">Here are your upcoming appointments.</p>
+        <p className="text-gray-500  text-base= sm:text-xl">
+          Here are your upcoming appointments.
+        </p>
       </div>
       <div className="flex flex-col gap-4 mb-24 border-t rounded-t-3xl p-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -142,18 +144,19 @@ const LandingPage = ({ changeMode }) => {
           </div>
         </div>
         <div className="flex justify-end">
-          <button 
-            className="bg-blue-600 text-white py-1 px-3 rounded" 
+          <button
+            className="bg-blue-600 text-white py-1 px-3 rounded"
             onClick={() => changeMode("hospitalSelect")}
           >
-            Book Appointment</button>
+            Book Appointment
+          </button>
         </div>
       </div>
       <div
         onClick={callerbot}
         className="fixed bottom-2 flex hover:shadow-lg duration-100 items-center justify-center right-2 rounded-full w-20 h-20 bg-blue-500 "
       >
-        <img src="/chatbot.png" width={85} className="text-white"/>
+        <img src="/chatbot.png" width={85} className="text-white" />
       </div>
     </div>
   );

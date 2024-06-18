@@ -5,7 +5,7 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-  theme:{
+  theme: {
     fontFamily: {
       kanit: ["Kanit", "sans-serif"],
       lato: ["Lato", "sans-serif"],
@@ -16,6 +16,5 @@ module.exports = {
       inter: ["Inter", "sans-serif"],
       "chakra-petch": ['"Chakra Petch"', "sans-serif"],
     },
-},
-}
-
+  },
+};

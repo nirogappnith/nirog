@@ -47,12 +47,14 @@ const RegistrationForm = ({ changeMode }) => {
   const handleSelect = (value) => {
     setSelectedOption(value);
   };
-  
-  const selectClasses = "w-full px-2 py-2.5 rounded border "
+
+  const selectClasses = "w-full px-2 py-2.5 rounded border ";
 
   return (
     <div className="flex flex-col gap-3  p-6 font-inter">
-      <h1 className="font-bold pb-1.5 border-b text-lg sm:text-xl lg:text-3xl">REGISTRATION FORM / <span className="font-light">(पंजीकरण)</span></h1>
+      <h1 className="font-bold pb-1.5 border-b text-lg sm:text-xl lg:text-3xl">
+        REGISTRATION FORM / <span className="font-light">(पंजीकरण)</span>
+      </h1>
       <div className="self-start flex flex-col p-10 w-full m-auto bg-gray-100/80 rounded border">
         <div className="dropdown self-start w-full space-y-2">
           <p className="font-bold m-0">Appointment Type/नियुक्ति प्रकार</p>

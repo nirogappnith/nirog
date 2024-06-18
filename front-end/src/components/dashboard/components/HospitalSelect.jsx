@@ -9,7 +9,7 @@ const HospitalSelect = ({ changeMode, setHospital }) => {
   useEffect(() => {
     const fetchhospital = async () => {
       await axios.get("http://localhost:8008/admin/getHospital").then((res) => {
-        console.log(res.data)
+        console.log(res.data);
         setHospitals(res.data);
       });
     };
@@ -68,12 +68,9 @@ const HospitalSelect = ({ changeMode, setHospital }) => {
     saveHospital();
   };
 
-
   return (
     <div className="relative flex flex-col text-zinc-800 gap-8 w-full p-6 font-inter ">
-      <h1 className=" m-0 text-4xl font-bold pb-2 border-b">
-        Hamirpur
-      </h1>
+      <h1 className=" m-0 text-4xl font-bold pb-2 border-b">Hamirpur</h1>
       <div className="mt-10">
         <h1>SELECT A HOSPITAL</h1>
         <h2 className="font-light">(अस्पताल का चयन करें)</h2>
@@ -120,7 +117,11 @@ const HospitalSelect = ({ changeMode, setHospital }) => {
           //     SELECT
           //   </button>
           // </div>
-          <HospitalCard key={hospital._id} data={hospital} onSelection={handleSelect}/>  
+          <HospitalCard
+            key={hospital._id}
+            data={hospital}
+            onSelection={handleSelect}
+          />
         ))}
       </div>
     </div>

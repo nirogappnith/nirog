@@ -16,17 +16,20 @@ const LoginForm = () => {
       dob: formData.get("dob"),
       sex: formData.get("sex"),
       mobile: formData.get("mobile"),
-      email: formData.get("email")
+      email: formData.get("email"),
     };
     console.log(formObj);
     setFormDetails(formObj);
-  
+
     const sendOTP = async () => {
       try {
-        const response = await axios.post("http://localhost:8008/user/sendOTP", {
-          ...formObj,
-          isRegistered: false,
-        });
+        const response = await axios.post(
+          "http://localhost:8008/user/sendOTP",
+          {
+            ...formObj,
+            isRegistered: false,
+          },
+        );
         console.log("otp sending response: ", response);
         alert("OTP sent");
         setOpen(!open); // Only set open state if OTP sent successfully
@@ -38,17 +41,17 @@ const LoginForm = () => {
     sendOTP();
     console.log("sentOTP");
   };
-  
+
   const handleVerify = (e) => {
     e.preventDefault();
     alert(`OTP you entered is ${otp}`);
-  
+
     const registerUser = async () => {
       try {
         console.log(formDetails);
         const res = await axios.post("http://localhost:8008/user/register/", {
           ...formDetails,
-          otp
+          otp,
         });
         if (res.status === 201) {
           console.log("res after register: ", res);
@@ -67,7 +70,6 @@ const LoginForm = () => {
     };
     registerUser();
   };
-  
 
   return (
     <div className=" bg-[#72B3BE] min-h-screen overflow-hidden login-container text-center justify-center p-0 align-center font-inter">
@@ -132,9 +134,9 @@ const LoginForm = () => {
             placeholder="Sex"
             required
             name="sex"
-                      >
+          >
             <option value="">Select </option>
-            <option value="male"  >Male</option>
+            <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
           </select>
