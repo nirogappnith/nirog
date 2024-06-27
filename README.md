@@ -1,6 +1,6 @@
 ﻿# Nirog_App
- 
-(A Systematic Patient Treatment Model in Govt. Hospitals of  INDIA) \
+
+(A Systematic Patient Treatment Model in Govt. Hospitals of INDIA) \
 Maintained by [@mehulambastha](https://github.com/mehulambastha) and [@Sourabh-awasthy](https://github.com/Sourabh-awasthy/)
 
 NIROG MODEL FEATURES ---
@@ -26,7 +26,6 @@ Future Features to be integrated:
 3.**Advanced Technology Integration**: With the arrival of , the NIROG model can incorporate cutting-edge technologies such as artificial intelligence, machine learning, and predictive analytics. These technologies can further streamline processes, improve diagnosis accuracy, and personalize patient treatment plans.
 ![WhatsApp Image 2024-03-10 at 09 56 02_f6502202](https://github.com/Sourabh-awasthy/the_Trailblazers/assets/147153342/89ecb3ab-9908-4906-bd53-b862a14e9946)
 
-
 Challenges we ran into -
 
 1.**Complex Integration and Backend Development**: Developing backend systems for both patient and doctor panels posed significant challenges due to the need for seamless integration and functionality across multiple platforms. Ensuring smooth data flow and communication between different components while maintaining security and scalability added complexity to the development process.
@@ -39,35 +38,35 @@ Challenges we ran into -
 
 5.**Incorporating Smooth user flow Interface and Experience for the Patient**: Making the portal easy to use involved learning how Patients navigate, making it accessible, and smooth access to all features of the portal.
 
-
 ![image](https://github.com/Sourabh-awasthy/the_Trailblazers/assets/147153342/4efb0d77-60b3-4e4e-9c69-6af08d9e532e)
 
 Running the project:
 
 1.Frontend Setup:
+
 - Navigate to the frontend directory in your terminal.
 - Run the command npm install to install the necessary dependencies.
 - After the installation completes, start the local development server by running npm start. - - This will launch the frontend application on a local host server.
 
-2.Backend Setup:
+  2.Backend Setup:
 
 - Switch to the backend directory in your terminal.
 - Execute npm install to install the required Node.js dependencies.
 - Set up the environment file (.env) with
 - ```bash
-  DATABASE_URL=mongodb+srv://nirognith:5U4C05yyMObcg6lz@nirog.4ijff5z.mongodb.net/?retryWrites=true&w=majority&appName=NIrog
-  JWT_KEY=nirog_nith
-  PORT=8008
+    DATABASE_URL=mongodb+srv://nirognith:5U4C05yyMObcg6lz@nirog.4ijff5z.mongodb.net/?retryWrites=true&w=majority&appName=NIrog
+    JWT_KEY=nirog_nith
+    PORT=8008
   ```
--Install mongodb compass application & paste the above url and connect to the project to see the database live (default is test)
+  -Install mongodb compass application & paste the above url and connect to the project to see the database live (default is test)
 - Start the backend server by running node server.js.
 
-3.Adds Folder Setup:
+  3.Adds Folder Setup:
 
 - Access the appropriate directory for the "adds" folder in your terminal.
 - Install the Python dependencies listed in the requirements.txt file by executing pip install -r requirements.txt.
 
-4.Overall Setup:
+  4.Overall Setup:
 
 - In the main terminal, ensure you're in the root directory of your project.
 - Run pip install -r requirements.txt to install any remaining Python dependencies needed for the project.

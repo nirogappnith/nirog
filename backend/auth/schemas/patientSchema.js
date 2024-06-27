@@ -1,4 +1,4 @@
-const zod = require('zod')
+const zod = require("zod");
 
 const userRegistrationSchema = zod.object({
   name: zod.string(),
@@ -9,19 +9,19 @@ const userRegistrationSchema = zod.object({
   prevReport: zod.array(),
   curReport: zod.string(),
   DoctorAssigned: zod.string(),
-  curToken: zod.string() ,
+  curToken: zod.string(),
   email: zod.string(),
   mobile: zod.number(),
   createdAt: zod.date().optional,
   otp: zod.number().optional(),
-  done: zod.boolean().optional()
-})
+  done: zod.boolean().optional(),
+});
 
 const userLoginSchema = zod.object({
-  email: zod.string()
-})
+  email: zod.string(),
+});
 
 module.exports = {
   userRegistrationSchema,
-  userLoginSchema
+  userLoginSchema,
 };

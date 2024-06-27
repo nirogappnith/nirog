@@ -48,17 +48,20 @@ const RegistrationForm = ({ changeMode }) => {
     setSelectedOption(value);
   };
 
+  const selectClasses = "w-full px-2 py-2.5 rounded border ";
+
   return (
-    <div className="flex flex-col gap-3 mt-10">
-      <h1 className="font-bold">REGISTRATION FORM</h1>
-      <h2 className="font-bold">(पंजीकरण)</h2>
-      <div className="self-start flex flex-col p-10 w-4/5 m-auto">
-        <div className="dropdown self-start">
-          <p className="font-bold">Appointment Type/नियुक्ति प्रकार</p>
+    <div className="flex flex-col gap-3  p-6 font-inter">
+      <h1 className="font-bold pb-1.5 border-b text-lg sm:text-xl lg:text-3xl">
+        REGISTRATION FORM / <span className="font-light">(पंजीकरण)</span>
+      </h1>
+      <div className="self-start flex flex-col p-10 w-full m-auto bg-gray-100/80 rounded border">
+        <div className="dropdown self-start w-full space-y-2">
+          <p className="font-bold m-0">Appointment Type/नियुक्ति प्रकार</p>
           <select
             value={selectedOption}
             onChange={(e) => handleSelect(e.target.value)}
-            className="px-10 py-3 rounded-full bg-slate-200 border-2 border-black"
+            className={selectClasses}
           >
             <option value="">Select an option</option>
             {options.map((option, index) => (
@@ -68,13 +71,12 @@ const RegistrationForm = ({ changeMode }) => {
             ))}
           </select>
         </div>
-
-        <div className="mt-10 dropdown self-start">
-          <p className="font-bold">Day</p>
+        <div className="mt-10 dropdown self-start w-full space-y-2">
+          <p className="font-bold m-0">Day</p>
           <select
             value={day}
             onChange={(e) => setDay(e.target.value)}
-            className="px-10 py-3 rounded-full bg-slate-200 border-2 border-black"
+            className={selectClasses}
           >
             <option value="">Select a day</option>
             <option value={"today"}>Today</option>
@@ -82,24 +84,25 @@ const RegistrationForm = ({ changeMode }) => {
           </select>
         </div>
 
-        <div className="self-start w-full text-left mt-5">
+        <div className="self-start w-full text-left my-5">
           <p className="font-bold">Symptoms/लक्षण</p>
           <div className="flex flex-col gap-3 w-full">
-            <label className="italic font-medium">Describe your symptoms</label>
+            {/* <label className="italic font-medium">Describe your symptoms</label> */}
             <textarea
-              className="border-1 border-slate-800 rounded-3xl p-3"
+              className="border rounded p-2"
+              placeholder="Describe your symptoms"
               width={300}
               height={200}
             ></textarea>
           </div>
         </div>
+        <button
+          onClick={handleProceed}
+          className=" bg-green-600/80  text-white font-medium text-xl self-center px-3 py-1.5 rounded-lg"
+        >
+          Proceed
+        </button>
       </div>
-      <button
-        onClick={handleProceed}
-        className=" bg-green-500 text-black font-medium text-xl self-center px-5 py-2 rounded-xl"
-      >
-        Proceed
-      </button>
     </div>
   );
 };

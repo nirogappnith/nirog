@@ -1,14 +1,14 @@
-import { jwtDecode } from 'jwt-decode';
-import React, { useEffect, useState } from 'react';
+import { jwtDecode } from "jwt-decode";
+import React, { useEffect, useState } from "react";
 
 const HospDash = () => {
   const [hospitalDetails, setHospitalDetails] = useState({
-    name: '',
-    address: '',
-    pincode: '',
+    name: "",
+    address: "",
+    pincode: "",
     patients: [],
-    password: '',
-    type: 'govt',
+    password: "",
+    type: "govt",
     ENT: {
       senior: {},
       junior: {},
@@ -52,51 +52,44 @@ const HospDash = () => {
   });
 
   const [doctors, setDoctors] = useState([]);
-  const [newDoctor, setNewDoctor] = useState('');
+  const [newDoctor, setNewDoctor] = useState("");
 
   // Function to add a new doctor
   const addDoctor = () => {
     setDoctors([...doctors, newDoctor]);
-    setNewDoctor('');
+    setNewDoctor("");
   };
 
   const getHospitalDetails = async (id) => {
     try {
-      console.log('Hospital ID:', id);
-      const response = await fetch(`https://localhost:8008/admin/getHospitalDetails`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      console.log("Hospital ID:", id);
+      const response = await fetch(
+        `https://localhost:8008/admin/getHospitalDetails`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ hospital_id: id }),
         },
-        body: JSON.stringify({ hospital_id: id}),
-      });
+      );
       const data = await response.json();
-      console.log('Hospital Details:', data);
-      console.log(data.name)
+      console.log("Hospital Details:", data);
+      console.log(data.name);
       setHospitalDetails(data);
-
-    }
-    catch (error) {
-      console.error('Error:', error);
+    } catch (error) {
+      console.error("Error:", error);
     }
   };
-  
-
-
 
   useEffect(() => {
     // Fetch hospital details
-    const hospital_id = localStorage.getItem('adminJWT');
+    const hospital_id = localStorage.getItem("adminJWT");
     const payload = jwtDecode(hospital_id);
     const id = payload.id;
-    console.log('Payload:', payload);
-    console.log('Hospital ID:', id);
+    console.log("Payload:", payload);
+    console.log("Hospital ID:", id);
     getHospitalDetails(id);
-
-    
-    
-
-    
   }, []);
 
   return (
@@ -109,10 +102,12 @@ const HospDash = () => {
             <span className="font-bold">Name:</span> {hospitalDetails.name}
           </p>
           <p>
-            <span className="font-bold">Address:</span> {hospitalDetails.address}
+            <span className="font-bold">Address:</span>{" "}
+            {hospitalDetails.address}
           </p>
           <p>
-            <span className="font-bold">Pincode:</span> {hospitalDetails.pincode}
+            <span className="font-bold">Pincode:</span>{" "}
+            {hospitalDetails.pincode}
           </p>
           <p>
             <span className="font-bold">Type:</span> {hospitalDetails.type}
@@ -125,7 +120,8 @@ const HospDash = () => {
         <h2 className="text-2xl font-bold mb-2">Total Patients and Doctors</h2>
         <div className="grid grid-cols-2 gap-4">
           <p>
-            <span className="font-bold">Total Patients:</span> {hospitalDetails.patients.length}
+            <span className="font-bold">Total Patients:</span>{" "}
+            {hospitalDetails.patients.length}
           </p>
           <p>
             <span className="font-bold">Total Doctors:</span> {doctors.length}

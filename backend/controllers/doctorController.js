@@ -234,12 +234,15 @@
 // };
 
 // module.exports = { login, register, getDoctor, doneForToday, getPatients };
-const bcrypt = require('bcrypt')
+const bcrypt = require("bcrypt");
 const Doctor = require("../models/doctorModel.js");
 const Patients = require("../models/patientModel.js");
 const Hospital = require("../models/hospitalModel.js");
 const generateToken = require("../utils/generateToken.js");
-const { doctorLoginSchema,doctorRegistrationSchema } = require('../auth/schemas/doctorSchema.js')
+const {
+  doctorLoginSchema,
+  doctorRegistrationSchema,
+} = require("../auth/schemas/doctorSchema.js");
 const jwt = require("jsonwebtoken");
 
 const login = async (req, res) => {
@@ -253,11 +256,11 @@ const login = async (req, res) => {
 
     // zod input validation
     const { success, data } = doctorLoginSchema.safeParse(req.body);
-    
+
     if (!success) {
       return res.status(400).json({
-        error: "Invalid req body"
-      })
+        error: "Invalid req body",
+      });
     }
 
     // const email = data.email;
@@ -267,13 +270,13 @@ const login = async (req, res) => {
 
     const doctor = await Doctor.findOne({ email });
 
-    const validPassword = await bcrypt.compare(password, doctor.password)
+    const validPassword = await bcrypt.compare(password, doctor.password);
 
     // Check if doctor exists and verify password
-    if (!doctor || !validPassword ) {
+    if (!doctor || !validPassword) {
       return res.status(401).json({
-        error: "Incorrect username or password"
-      })
+        error: "Incorrect username or password",
+      });
     }
 
     const jwtToken = generateToken(doctor._id);
@@ -312,20 +315,13 @@ const register = async (req, res) => {
     const { success, data } = doctorRegistrationSchema.safeParse(req.body);
     if (!success) {
       return res.status(400).json({
-        error: "Invalid request body | All fields are required"
-      })
+        error: "Invalid request body | All fields are required",
+      });
     }
 
-    const {
-      email,
-      name,
-      password,
-      mobile,
-      exp,
-      specialisation
-    } = data
+    const { email, name, password, mobile, exp, specialisation } = data;
 
-    const { adminJWT } = req.body
+    const { adminJWT } = req.body;
 
     const doctorExists = await Doctor.findOne({ email });
     if (doctorExists) {
@@ -334,8 +330,7 @@ const register = async (req, res) => {
 
     // hashing the password
     const salt = await bcrypt.genSalt(); // generating the salt
-    const hashedPassword = await bcrypt.hash(password, salt) // hashing with salt
-
+    const hashedPassword = await bcrypt.hash(password, salt); // hashing with salt
 
     // Create new doctor
     const doctor = new Doctor({
